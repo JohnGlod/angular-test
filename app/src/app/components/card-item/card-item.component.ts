@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IMovie } from 'src/app/models/IMovie.intarface';
 
 @Component({
   selector: 'card-item',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 
 export class CardItemComponent {
+  @Input() item: IMovie
 }
