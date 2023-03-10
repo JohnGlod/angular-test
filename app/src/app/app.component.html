@@ -1,2 +1,9 @@
-hello
-<card-item></card-item>
+<div class="app">
+  <section class="movies">
+    <h2 class="title">Популярные фильмы</h2>
+    <ul class="movies__list" >
+      <card-item [item]="movie" *ngFor="let movie of movies"></card-item>
+    </ul>
+    <h2 class="title">Самый лучший фильм</h2>
+  </section>
+</div>
