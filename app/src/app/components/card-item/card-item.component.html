@@ -7,7 +7,7 @@
     <span class="card-item__genres">{{ item.genre | appGenresTransform | appJoinPipe}} </span>
     <span class="card-item__year">{{item.year}}</span>
   </div>
-  <div class="card-item__like">
-    <like-svg></like-svg>
+  <div *ngIf="liked" class="card-item__like">
+    <like-svg (click)="addFavorite(item.id)"></like-svg>
   </div>
 </li>

@@ -8,5 +8,7 @@ import { IMovie } from 'src/app/models/IMovie.intarface';
 })
 
 export class CardItemComponent {
-  @Input() item: IMovie
+  @Input() item: IMovie;
+  @Input() liked: boolean;
+  @Input() addFavorite: (id: number) => void;
 }
