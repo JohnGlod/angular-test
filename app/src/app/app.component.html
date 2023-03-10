@@ -1,9 +1,22 @@
 <div class="app">
   <section class="movies">
     <h2 class="title">Популярные фильмы</h2>
-    <ul class="movies__list" >
-      <card-item [item]="movie" *ngFor="let movie of movies"></card-item>
+    <ul class="movies__list">
+      <card-item
+        [addFavorite]="addFavorite"
+        [item]="movie"
+        [liked]="true"
+        *ngFor="let movie of movies"
+      ></card-item>
     </ul>
-    <h2 class="title">Самый лучший фильм</h2>
+    <h2 *ngIf="!!bestMovie.length" class="title">Самый лучший фильм</h2>
+    <ul *ngIf="!!bestMovie.length" class="movies__list list-none">
+      <card-item
+        [addFavorite]="addFavorite"
+        [item]="movie"
+        [liked]="false"
+        *ngFor="let movie of bestMovie"
+      ></card-item>
+    </ul>
   </section>
 </div>
