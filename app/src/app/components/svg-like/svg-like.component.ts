@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'like-svg',
@@ -10,6 +10,5 @@ export class SvgComponent {
 
   changeColor() {
     this.like = !this.like
-    console.log(this.like)
   }
 }
