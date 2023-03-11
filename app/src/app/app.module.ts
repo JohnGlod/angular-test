@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { SvgComponent } from './components/svg-like/svg-like.component';
 import { GenresTransformPipe, JoinPipe} from './pipes';
+import { LikesTransformPipe } from './pipes/likes-transform.pipe';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { GenresTransformPipe, JoinPipe} from './pipes';
     GenresTransformPipe,
     JoinPipe,
     CardItemComponent,
-    SvgComponent
+    SvgComponent,
+    LikesTransformPipe
   ],
   imports: [
     BrowserModule,

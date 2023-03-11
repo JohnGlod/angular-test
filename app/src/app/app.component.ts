@@ -1,37 +1,44 @@
 import { Component } from '@angular/core';
 import data from './data/data.json';
 import { IMovie } from './models/IMovie.intarface';
-import { StorageService } from './service/storage.service';
+import { LocalStorageService } from './service/storage.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent {
-  constructor(private Storage: StorageService){}
+  constructor(private readonly localStorageService: LocalStorageService) {}
   title = 'app';
   movies = data;
-  bestMovie: IMovie[] = this.Storage.getLocalStorage();
+  bestMovie: IMovie[] = [];
+  bestMovieID: number | undefined = undefined;
 
-  addFavorite = (id: number): void => {
+  addFavoriteMovie = (id: number): void => {
     const findId = this.bestMovie.pop()?.id;
-
     if (findId === id) {
-      this.Storage.clearLocalStorage();
+      this.localStorageService.clearLocalStorage();
+      this.bestMovieID = undefined;
       return;
     }
 
     if (this.bestMovie.length > 0) {
-      this.Storage.clearLocalStorage();
+      this.localStorageService.clearLocalStorage();
     }
 
     const findMovie = this.movies.find((movie) => movie.id === id);
 
     if (findMovie) {
-      this.Storage.setLocalStorage([findMovie]);
+      this.localStorageService.setSynchronizedData([findMovie]);
+      this.bestMovieID = id;
     }
   };
 
+  ngOnInit() {
+    this.localStorageService.getSynchronizedData().subscribe((data) => {
+      this.bestMovie = data;
+      this.bestMovieID = data[0]?.id;
+    });
+  }
 }
