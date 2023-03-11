@@ -1,1 +1,23 @@
-card-item
+<li [id]="item.id" class="card-item">
+  <picture>
+    <img
+      class="card-item__image"
+      src="assets/images/{{ item.id }}.jpeg"
+      alt="Фильм '{{ item.name }}'"
+    />
+  </picture>
+  <div class="card-item__descr">
+    <strong class="card-item__title">{{ item.name }}</strong>
+    <span class="card-item__genres"
+      >{{ item.genre | appGenresTransform | appJoinPipe }}
+    </span>
+    <span class="card-item__year">{{ item.year }}</span>
+  </div>
+  <button
+    *ngIf="isLiked"
+    class="card-item__like"
+    (click)="addFavorite(item.id)"
+  >
+    <like-svg [isLiked]="isLikedId | likesTransform : item"></like-svg>
+  </button>
+</li>

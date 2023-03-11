@@ -1,2 +1,23 @@
-hello
-<card-item></card-item>
+<div class="app">
+  <section class="movies">
+    <h2 class="title">Популярные фильмы</h2>
+    <ul class="movies__list">
+      <card-item
+        [addFavorite]="addFavoriteMovie"
+        [item]="movie"
+        [isLiked]="true"
+        [isLikedId]="bestMovieID"
+        *ngFor="let movie of movies"
+      ></card-item>
+    </ul>
+    <h2 *ngIf="!!bestMovie.length" class="title">Самый лучший фильм</h2>
+    <ul *ngIf="!!bestMovie.length" class="movies__list list-none">
+      <card-item
+        [addFavorite]="addFavoriteMovie"
+        [item]="movie"
+        [isLiked]="false"
+        *ngFor="let movie of bestMovie"
+      ></card-item>
+    </ul>
+  </section>
+</div>
