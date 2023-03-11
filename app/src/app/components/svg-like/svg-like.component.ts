@@ -4,11 +4,9 @@ import { Component, Input } from '@angular/core';
   selector: 'like-svg',
   templateUrl: './svg-like.component.svg',
 })
-
 export class SvgComponent {
-  like = false
-
+  @Input() isLiked?: boolean;
   changeColor() {
-    this.like = !this.like
+    this.isLiked = !this.isLiked;
   }
 }
