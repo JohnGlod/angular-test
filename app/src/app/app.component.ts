@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import data from './data/data.json';
 import { IMovie } from './models/IMovie.intarface';
+import { ISearchData } from './models/ISearchData.interface';
 import { LocalStorageService } from './service/storage.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AppComponent {
   ) {}
   title = 'app';
   movies = data;
+  filteredMovies: IMovie[] = [];
   bestMovie: IMovie[] = [];
   bestMovieID: number | undefined = undefined;
   addFavoriteMovie = (event: MouseEvent, id: number): void => {
@@ -38,6 +40,34 @@ export class AppComponent {
       this.bestMovieID = id;
     }
   };
+
+  onSearch(eventData: ISearchData) {
+    const { genre, searchQuery } = eventData;
+
+    if (!searchQuery && genre === 0) this.filteredMovies = [];
+
+    let filteredMovies = this.movies;
+
+    if (genre > 0) {
+      filteredMovies = filteredMovies.filter((movie) =>
+        movie.genre.includes(genre)
+      );
+    }
+
+    if (searchQuery) {
+      if (genre > 0) {
+        filteredMovies = filteredMovies.filter((movie) =>
+          movie.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      } else {
+        filteredMovies = this.movies.filter((movie) =>
+          movie.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+    }
+
+    this.filteredMovies = filteredMovies;
+  }
 
   ngOnInit() {
     this.localStorageService.getSynchronizedData().subscribe((data) => {
