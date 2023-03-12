@@ -1,4 +1,4 @@
-<li [id]="item.id" class="card-item">
+<li [id]="item.id" class="card-item" (click)="handleOpenDialog($event, item)">
   <picture>
     <img
       class="card-item__image"
@@ -16,7 +16,7 @@
   <button
     *ngIf="isLiked"
     class="card-item__like"
-    (click)="addFavorite(item.id)"
+    (click)="addFavorite($event, item.id)"
   >
     <like-svg [isLiked]="isLikedId | likesTransform : item"></like-svg>
   </button>

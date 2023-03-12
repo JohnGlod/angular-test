@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import data from './data/data.json';
 import { IMovie } from './models/IMovie.intarface';
 import { LocalStorageService } from './service/storage.service';
@@ -9,13 +10,16 @@ import { LocalStorageService } from './service/storage.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private readonly localStorageService: LocalStorageService) {}
+  constructor(
+    private readonly localStorageService: LocalStorageService,
+    public dialog: MatDialog
+  ) {}
   title = 'app';
   movies = data;
   bestMovie: IMovie[] = [];
   bestMovieID: number | undefined = undefined;
-
-  addFavoriteMovie = (id: number): void => {
+  addFavoriteMovie = (event: MouseEvent, id: number): void => {
+    event.stopPropagation();
     const findId = this.bestMovie.pop()?.id;
     if (findId === id) {
       this.localStorageService.clearLocalStorage();
