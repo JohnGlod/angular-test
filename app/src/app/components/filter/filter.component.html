@@ -1,12 +1,12 @@
 <div class="filter">
-  <mat-form-field>
+  <mat-form-field class="inputs">
     <mat-select placeholder="Все" [(ngModel)]="selectValue" (selectionChange)="this.handleSelect()">
       <mat-option *ngFor="let option of options" [value]="option.value">
         {{ option.viewValue | titlecase }}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="inputs">
     <input
       matInput
       [(ngModel)]="searchQuery"
