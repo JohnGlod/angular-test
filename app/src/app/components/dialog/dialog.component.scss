@@ -1,0 +1,62 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.dialog {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 15px 20px;
+  &__image {
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 5px;
+  }
+  &__text {
+    color: #1d1838;
+    display: flex;
+    gap: 10px;
+    font-family: "Montserrat", sans-serif;
+    flex-direction: column;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+  }
+  &__genres {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  &__descr {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  &__year {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  &__descr {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  &__buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    align-self: flex-end;
+  }
+}
