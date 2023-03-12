@@ -53,6 +53,10 @@
     line-height: 14px;
   }
   &__buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
     font-family: "Roboto", sans-serif;
+    align-self: flex-end;
   }
 }

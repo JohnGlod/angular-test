@@ -1,37 +1,38 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { EGenres } from '../models/EGenres.enum';
 
 @Pipe({
   name: 'appGenresTransform',
 })
 export class GenresTransformPipe implements PipeTransform {
-  transform(value: number[]):string[] {
-    return value.map(num => {
+  transform(value: number[]): string[] {
+    return value.map((num) => {
       switch (num) {
         case 1:
-          return 'драма';
+          return EGenres.DRAMA;
         case 2:
-          return 'биография';
+          return EGenres.BIO;
         case 3:
-          return 'история';
+          return EGenres.HISTORY;
         case 4:
-          return 'фэнтези';
+          return EGenres.FENTASY;
         case 5:
-          return 'приключения';
+          return EGenres.ADVENTURE;
         case 6:
-          return 'боевик';
+          return EGenres.ACTION_MOVIE;
         case 7:
-          return 'мультфильм';
+          return EGenres.CARTOON;
         case 8:
-          return 'комедия';
+          return EGenres.COMEDY;
         case 9:
-          return 'триллер';
+          return EGenres.THRILLER;
         case 10:
-          return 'детектив';
+          return EGenres.DETECTIVE;
         case 11:
-          return 'фантастика';
+          return EGenres.FANTASTIC;
         default:
           return 'Не известно';
       }
-    })
+    });
   }
 }

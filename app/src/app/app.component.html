@@ -1,14 +1,30 @@
 <div class="app">
   <section class="movies">
     <h2 class="title">Популярные фильмы</h2>
+    <app-filter (findMovie)="onSearch($event)"></app-filter>
+
     <ul class="movies__list">
-      <card-item
-        [addFavorite]="addFavoriteMovie"
-        [item]="movie"
-        [isLiked]="true"
-        [isLikedId]="bestMovieID"
-        *ngFor="let movie of movies"
-      ></card-item>
+      <ng-container
+        *ngIf="filteredMovies.length > 0; else defaultMovies"
+      >
+        <card-item
+          [addFavorite]="addFavoriteMovie"
+          [item]="movie"
+          [isLiked]="true"
+          [isLikedId]="bestMovieID"
+          *ngFor="let movie of filteredMovies"
+        ></card-item>
+      </ng-container>
+
+      <ng-template #defaultMovies>
+        <card-item
+          [addFavorite]="addFavoriteMovie"
+          [item]="movie"
+          [isLiked]="true"
+          [isLikedId]="bestMovieID"
+          *ngFor="let movie of movies"
+        ></card-item>
+      </ng-template>
     </ul>
     <h2 *ngIf="!!bestMovie.length" class="title">Самый лучший фильм</h2>
     <ul *ngIf="!!bestMovie.length" class="movies__list list-none">

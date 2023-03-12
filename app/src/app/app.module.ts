@@ -7,8 +7,11 @@ import { GenresTransformPipe, JoinPipe, LikesTransformPipe } from './pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { DialogComponent } from './components/dialog/dialog.component';
-
+import { FilterComponent } from './components/filter/filter.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +21,16 @@ import { DialogComponent } from './components/dialog/dialog.component';
     SvgComponent,
     LikesTransformPipe,
     DialogComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
